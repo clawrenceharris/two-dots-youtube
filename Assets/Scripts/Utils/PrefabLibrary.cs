@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:62c1617263e2801819e07904d5a2ebb6518c509efd78b11bf0fc2a5d7b6a8ab0
-size 437
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "PrefabLibrary", menuName = "Scriptable Objects/Prefab Library")]
+public class PrefabLibrary : ScriptableSingleton<PrefabLibrary>
+{
+    [SerializeField] private List<Dot> Dots;
+
+    public Dot GetDotPrefab(DotType type)
+    {
+        return Dots.FirstOrDefault((dot) => dot.Type == type);
+    }
+
+    
+}
